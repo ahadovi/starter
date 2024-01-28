@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Tailwind Merge and CLSX (cn):
 
-## Getting Started
+- Go to `utils` folder > `index.ts` file
+- It actually works for **_conflict_** conditional and **_over writing_** tailwind classes.
 
-First, run the development server:
+## Before git add and commit run:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Husky Configuration (If git not init, please [`git init`] first).
+
+- `npm run prepare`
+
+Then create a file `pre-commit` inside `.husky` folder and copy & paste this code:
+
+```js
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx lint-staged
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then run this: `chmod +x .husky/pre-commit`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Docker Command:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
+#&&
+docker-compose up
+```
 
-## Learn More
+or-
 
-To learn more about Next.js, take a look at the following resources:
+- Upload docker: `docker compose up` | if linux or macOs then `sudo docker compose up`
+- Upload docker detach mode: `docker compose up -d` | if linux or macOs then `sudo docker compose up -d`
+- Delete docker container & stop: `docker compose down` | if linux or macOs then `sudo docker compose down`
+- Remove docker image after container remove (if needed): `docker rmi [image-name]` | if linux or macOs then `sudo docker rmi [image-name]`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Manually run docker:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+> Build docker image: `docker build -t project-name .` | if linux or macOs then `sudo docker build -t project-name .`
+>
+> upload and run detach mode: `docker run -p (your define port:4003):(your server port:80) project-name -d`
 
-## Deploy on Vercel
+## Docker Build (with compose)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Docker Build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+docker build -t project-name ./
+docker run -d -p 3000(expose port):3000 project-name/project-name.com
+```
