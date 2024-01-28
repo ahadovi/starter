@@ -40,12 +40,3 @@ or-
 > Build docker image: `docker build -t project-name .` | if linux or macOs then `sudo docker build -t project-name .`
 >
 > upload and run detach mode: `docker run -p (your define port:4003):(your server port:80) project-name -d`
-
-## Docker Build (with compose)
-
-## Docker Build
-
-```bash
-docker build -t project-name ./
-docker run -d -p 3000(expose port):3000 project-name/project-name.com
-```
