@@ -1,9 +1,15 @@
 export default function Home() {
   return (
     <main className="container">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. In consectetur
-      laborum iure exercitationem ullam suscipit. Est, rem voluptate hic harum
-      enim quae sapiente, provident sit officiis odit dolore, corrupti iure!
+      <div className="container mx-auto min-h-screen grid place-content-center">
+        <h2 className="text-2xl leading-none">
+          Please Read{' '}
+          <code className="text-sm rounded bg-green-700 inline-block px-2 py-1 text-white font-bold leading-none">
+            README.md
+          </code>{' '}
+          file first, then start
+        </h2>
+      </div>
     </main>
   );
 }
